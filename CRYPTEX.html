@@ -711,8 +711,8 @@
     if (!walletAddress) return showToast('Crie ou importe uma carteira antes de usar MoonPay', 'error');
 
     try {
-      const response = await fetch(`http://localhost:3000/moonpay/url?amount=${encodeURIComponent(amount.toFixed(2))}&walletAddress=${encodeURIComponent(walletAddress)}`);
-      const data = await response.json();
+  const response = await fetch(`/moonpay/url?amount=${encodeURIComponent(amount.toFixed(2))}&walletAddress=${encodeURIComponent(walletAddress)}`);
+    const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'Falha ao gerar checkout MoonPay');
       window.open(data.url, '_blank');
     } catch (error) {
