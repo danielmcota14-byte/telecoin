@@ -86,17 +86,7 @@ app.post("/moonpay/transaction", async (req, res) => {
   }
 
   try {
-    let _fetch = globalThis.fetch;
-    if (typeof _fetch !== 'function') {
-      try {
-        const mod = await import('node-fetch');
-        _fetch = mod.default || mod;
-      } catch (err) {
-        return res.status(500).json({ error: 'Fetch not available. Install node-fetch or use Node >=18.' });
-      }
-    }
-
-    const resp = await _fetch("https://api.moonpay.io/v3/transactions", {
+    const resp = await fetch("https://api.moonpay.io/v3/transactions", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${secret}`,
