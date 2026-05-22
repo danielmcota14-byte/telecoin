@@ -86,7 +86,17 @@ app.post("/moonpay/transaction", async (req, res) => {
   }
 
   try {
-    const resp = await fetch("https://api.moonpay.io/v3/transactions", {
+    let _fetch = globalThis.fetch;
+    if (typeof _fetch !== 'function') {
+      try {
+        const mod = await import('node-fetch');
+        _fetch = mod.default || mod;
+      } catch (err) {
+        return res.status(500).json({ error: 'Fetch not available. Install node-fetch or use Node >=18.' });
+      }
+    }
+
+    const resp = await _fetch("https://api.moonpay.io/v3/transactions", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${secret}`,
@@ -142,6 +152,6 @@ app.get("/cryptex.html", (_req, res) => {
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(port, () => {
-  console.log(`MoonPay backend running on http://localhost:${port}`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`MoonPay backend running on http://0.0.0.0:${port}`);
 });
