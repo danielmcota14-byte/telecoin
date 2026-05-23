@@ -2362,24 +2362,41 @@ window.buyTokenWithETH = buyTokenWithETH;
             <button class="btn-danger" onclick="handleLogout()">SAIR DA CONTA</button>
           </div>
         </div>
-
+<!-- TELETRADE INNER PAGE -->
+<div class="inner-page" id="inner-teletrade">
+  <div style="display:flex; align-items:center; gap:12px; padding:16px 16px 0;">
+    <button onclick="switchInnerPage('wallet')" style="color:var(--text3); font-size:18px;">←</button>
+    <h2 class="page-inner-header" style="padding:0;">Teletrade</h2>
+  </div>
+  <div style="padding:16px; height: calc(100vh - 160px);">
+    <iframe  src="https://timely-yeot-9f52f7.netlify.app/"   
+      style="width:100%; height:100%; border:none; border-radius:12px; background:#0f0f0f;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
       </div><!-- end main-content -->
 
       <!-- Bottom Nav -->
-      <nav class="bottom-nav">
-        <div class="nav-item active" data-page="wallet" onclick="switchInnerPage('wallet')">
-          <span class="nav-icon">◈</span> CARTEIRA
-        </div>
-        <div class="nav-item" data-page="market" onclick="switchInnerPage('market')">
-          <span class="nav-icon"></span> MERCADO
-        </div>
-        <div class="nav-item" data-page="social" onclick="switchInnerPage('social'); window.loadSocialFeed && window.loadSocialFeed()">
-          <span class="nav-icon">◎</span> SOCIAL
-        </div>
-        <div class="nav-item" data-page="settings" onclick="switchInnerPage('settings')">
-          <span class="nav-icon"></span> CONTA
-        </div>
-      </nav>
+<nav class="bottom-nav">
+  <div class="nav-item active" data-page="wallet" onclick="switchInnerPage('wallet')">
+    <span class="nav-icon"></span> CARTEIRA
+  </div>
+  <div class="nav-item" data-page="market" onclick="switchInnerPage('market')">
+    <span class="nav-icon"></span> MERCADO
+  </div>
+  <div class="nav-item" data-page="social" onclick="switchInnerPage('social'); window.loadSocialFeed && window.loadSocialFeed()">
+    <span class="nav-icon"></span> SOCIAL
+  </div>
+  <!-- NOVO ITEM TELETRADE -->
+  <div class="nav-item" data-page="teletrade" onclick="switchInnerPage('teletrade')">
+    <span class="nav-icon"></span> TELETRADE
+  </div>
+  <div class="nav-item" data-page="settings" onclick="switchInnerPage('settings')">
+    <span class="nav-icon"></span> CONTA
+  </div>
+</nav>
     </div>
   </div><!-- end page-dashboard -->
 
